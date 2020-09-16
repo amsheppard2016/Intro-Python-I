@@ -10,17 +10,8 @@ https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files
 # Note: pay close attention to your current directory when trying to open "foo.txt"
 
 # YOUR CODE HERE
-import os.path
-
-the_path = os.path.dirname(__file__)
-foo_path = os.path.join(the_path, 'foo.txt')
-
-with open(foo_path) as f:
-    print('Contents of \'foo.txt\':')
-    for line in f:
-        print('  ' + line, end='')
-
-f.close()
+foo = open("./foo.txt","r")
+print(foo.read())
 
 # Open up a file called "bar.txt" (which doesn't exist yet) for
 # writing. Write three lines of arbitrary content to that file,
@@ -28,20 +19,14 @@ f.close()
 # sure that it contains what you expect it to contain
 
 # YOUR CODE HERE
-arbitrary_text = '''First line of arbitrary text.
-Secont line of arbitrary text.
-Third line of arbitarry text. '''
+bar = open("./bar.txt","w")
 
-bar_path = os.path.join(the_path, 'bar.txt')
+bar.write("first line of bar\n")
+bar.write("second line of bar\n")
+bar.write("third line of bar\n")
 
-with open(bar_path, 'w') as f:
-    f.write(arbitrary_text)
+bar.close()
+bar = open("./bar.txt","r")
 
-f.close()
+print(bar.read())
 
-with open(bar_path) as f:
-    print('\nContents of \'bar.txt\':')
-    for line in f:
-        print('' + line, end='')
-
-f.close()

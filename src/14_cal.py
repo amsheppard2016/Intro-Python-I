@@ -31,14 +31,31 @@ import sys
 import calendar
 from datetime import datetime
 
-num_args = len(sys.argv) - 1
+currentMonth = datetime.now().month
+currentYear = datetime.now().year
 
-if num_args > 2:
-    print(
-        "usage: 14_cal.py [month] [year]\n\n14_cal.py: error: too many arguments")
-    sys.exit()
+def cal(m = currentMonth,y = currentYear):
+    c = calendar.TextCalendar(calendar.SUNDAY)
+    str = c.formatmonth(y,m)
+    print(str)
 
-mm = int(sys.argv[1]) if num_args > 0 else datetime.today().month
-yy = int(sys.argv[2]) if num_args > 1 else datetime.today().year
-
-print(calendar.month(yy, mm))
+cal_input =input(f'Enter month and year for calender:').split()
+print(len(cal_input))
+if len(cal_input) == 2:
+    if cal_input[0] != '' and cal_input[1] != '':
+        m = int(cal_input[0])
+        y = int(cal_input[1])
+        cal(m,y)
+    else:
+      print(f'Please enter month and year in numner format')
+elif len(cal_input) == 1:
+    if int(cal_input[0]) > 12:
+        m = currentMonth
+        y = int(cal_input[0])
+        cal(m,y)
+    elif int(cal_input[0]) > 0:
+        m = int(cal_input[0])
+        y = currentYear
+        cal(m,y)
+    else:
+      print(f'Please enter month or year in number format')

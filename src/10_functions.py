@@ -1,8 +1,7 @@
 # Write a function is_even that will return true if the passed-in number is even.
 
 # YOUR CODE HERE
-def is_even(n):
-    return n % 2 == 0
+
 
 
 # Read a number from the keyboard
@@ -13,7 +12,15 @@ num = int(num)
 
 
 # YOUR CODE HERE
+def is_even(x):
+    if x % 2 == 0:
+        return True
+    else:
+        return False
+
 if is_even(num):
-    print("Even!")
+    print(f"Even!")
 else:
-    print("Odd")
+    print(f'Odd!')
+    
+
